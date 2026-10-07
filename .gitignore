@@ -3,3 +3,4 @@
 .env
 AI_LOG.md
 test.db
+__pycache__
