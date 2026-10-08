@@ -47,7 +47,7 @@ python -m venv .venv
 # Linux/macOS
 source .venv/bin/activate
 pip install -r requirements.txt
-# в .env укажи DATABASE_URL=sqlite+aiosqlite:///./kvitto.db
+
 alembic upgrade head
 uvicorn app.main:app --reload
 ```
@@ -56,6 +56,8 @@ uvicorn app.main:app --reload
 
 ```bash
 pytest -q
+# подробней
+pytest -v
 ```
 
 ## Примеры
