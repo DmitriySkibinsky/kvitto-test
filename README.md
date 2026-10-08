@@ -2,16 +2,41 @@
 
 FastAPI-тестовое: платежи онлайн-школы. Суммы хранятся только целым числом копеек.
 
+## Конфигурация
+
+Скопируй пример и при необходимости измени значения:
+
+```bash
+cp .env.example .env
+```
+
+Переменные в `.env`:
+
+| Переменная | Описание |
+|---|---|
+| `POSTGRES_DB` | Имя БД Postgres |
+| `POSTGRES_USER` | Пользователь Postgres |
+| `POSTGRES_PASSWORD` | Пароль Postgres |
+| `DATABASE_URL` | URL для SQLAlchemy (asyncpg в Docker) |
+| `WEBHOOK_SECRET` | Секрет HMAC для `/webhooks/bank` |
+| `APP_PORT` | Порт приложения на хосте (по умолчанию 8000) |
+
 ## Запуск через Docker
 
 ```bash
 docker compose up --build
 ```
 
-API: http://localhost:8000
+API: http://localhost:8000  
 Swagger: http://localhost:8000/docs
 
 Миграции Alembic запускаются автоматически перед стартом приложения.
+
+Если менял пароль/пользователя БД и видишь `password authentication failed` — сбрось том:
+
+```bash
+docker compose down -v && docker compose up --build
+```
 
 ## Локальный запуск
 
@@ -22,11 +47,10 @@ python -m venv .venv
 # Linux/macOS
 source .venv/bin/activate
 pip install -r requirements.txt
+# в .env укажи DATABASE_URL=sqlite+aiosqlite:///./kvitto.db
 alembic upgrade head
 uvicorn app.main:app --reload
 ```
-
-Для локального SQLite миграции используют `alembic.ini`.
 
 ## Тесты
 

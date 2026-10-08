@@ -3,10 +3,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from sqlalchemy import select
 
-from app.db.session import SessionLocal, engine
-from app.models import Base, Tariff
 from app.api.routes import router
-
+from app.db.session import SessionLocal, engine
+from app.models import Tariff
 
 TARIFFS = [
     ("basic", 990_000),

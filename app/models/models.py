@@ -30,4 +30,8 @@ class Payment(Base):
     schedule: Mapped[str | None] = mapped_column(String(2000), nullable=True)
     email: Mapped[str] = mapped_column(String(320), nullable=False)
     idempotency_key: Mapped[str | None] = mapped_column(String(255), nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now(), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime,
+        server_default=func.now(),
+        nullable=False
+    )

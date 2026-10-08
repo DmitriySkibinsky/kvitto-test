@@ -1,6 +1,10 @@
-.venv
-.idea
 .env
-AI_LOG.md
-test.db
-__pycache__
+.venv/
+__pycache__/
+*.py[cod]
+*.db
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/

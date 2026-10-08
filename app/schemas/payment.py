@@ -3,7 +3,6 @@ from typing import Literal
 
 from pydantic import BaseModel, EmailStr, model_validator
 
-
 PaymentMethod = Literal["card", "sbp", "installment"]
 PaymentStatus = Literal["pending", "succeeded", "failed", "refunded"]
 
